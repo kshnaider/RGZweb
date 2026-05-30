@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контактные данные</title>
+
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("sideMenu");
+            const overlay = document.getElementById("overlay");
+
+            menu.classList.toggle("open");
+            overlay.classList.toggle("show");
+        }
+    </script>
+    <style>
+        :root {
+            --blue: #0b3a82;
+            --blue-dark: #072a5c;
+            --orange: #f28c00;
+            --bg: #f4f6f9;
+            --text: #1f2a37;
+            --card: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--blue-dark), var(--blue));
+            color: white;
+            padding: 20px 0;
+            border-bottom: 4px solid var(--orange);
+        }
+
+        .header-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .accent {
+            color: var(--orange);
+        }
+
+
+        main {
+            flex: 1;
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .map, .contact {
+            background: var(--card);
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            padding: 15px;
+        }
+
+        .contact {
+            border-left: 5px solid var(--orange);
+            padding: 25px;
+        }
+
+        .contact h2 {
+            color: var(--blue);
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .label {
+            font-weight: bold;
+            color: var(--blue-dark);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border: 0;
+            border-radius: 8px;
+        }
+
+        footer {
+            background: var(--blue-dark);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-top: 4px solid var(--orange);
+            font-size: 14px;
+        }
+
+        @media (max-width: 800px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-block {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #f7f9fc;
+    border-radius: 8px;
+    border-left: 3px solid #f28c00;
+}
+
+    .icon {
+        font-size: 20px;
+    }
+
+    .label {
+        font-weight: bold;
+        color: #0b3a82;
+        margin-bottom: 3px;
+    }
+
+    .actions {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .actions button {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        background: #0b3a82;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .actions button:hover {
+        background: #072a5c;
+    }
+
+    .burger {
+        position: fixed;
+        top: 18px;
+        right: 20px;
+        width: 35px;
+        height: 25px;
+        cursor: pointer;
+        z-index: 2000;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .burger span {
+        height: 4px;
+        background: white;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+
+
+    .side-menu {
+        position: fixed;
+        top: 0;
+        right: -260px;
+        width: 240px;
+        height: 100%;
+        background: linear-gradient(180deg, #0d47a1, #1e88e5);
+        color: white;
+        padding: 60px 20px;
+        transition: 0.4s ease;
+        z-index: 1500;
+        box-shadow: -10px 0 25px rgba(0,0,0,0.2);
+    }
+
+    .side-menu h2 {
+        margin-bottom: 20px;
+    }
+
+    .side-menu a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        margin: 12px 0;
+        font-size: 16px;
+        opacity: 0.9;
+    }
+
+    .side-menu a:hover {
+        opacity: 1;
+        transform: translateX(5px);
+        transition: 0.2s;
+    }
+
+
+    .side-menu.open {
+        right: 0;
+    }
+
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        background: rgba(0,0,0,0.4);
+        opacity: 0;
+        visibility: hidden;
+
+        transition: 0.3s;
+        z-index: 1400;
+    }
+    </style>
+</head>
+
+<body>
+
+<div class="burger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+
+<div id="sideMenu" class="side-menu">
+    <h2>Меню</h2>
+    <a href="company.html">О компании</a>
+    <a href="news.html">Новости</a>
+    <a href="rub-uah-calculator.html">Курс валют</a>
+    <a href="map.html">Контакты</a>
+    <a href="record.html">Видео</a>
+</div>
+
+
+<div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+<header>
+    <div class="header-container">
+        ПАО <span class="accent">ДЭК</span> — Контактные данные
+    </div>
+</header>
+
+<main>
+
+    <div class="map">
+        <iframe 
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3Aaa2e27349a985e7830bc37b40a4cf7479247387516ed9913216d6f07e19b8abb&source=constructor">
+        </iframe>
+    </div>
+
+<div class="contact">
+    <h2>Контактная информация</h2>
+
+    <div class="info-block">
+        <div class="icon">📍</div>
+        <div>
+            <div class="label">Адрес</div>
+            <div>Приморский край, г. Владивосток, ул. Тигровая, д. 19</div>
+        </div>
+    </div>
+
+    <div class="info-block">
+        <div class="icon">📞</div>
+        <div>
+            <div class="label">Телефон</div>
+            <div>(423) 240-68-45</div>
+        </div>
+    </div>
+
+    <div class="info-block">
+        <div class="icon">✉️</div>
+        <div>
+            <div class="label">E-mail</div>
+            <div>priemn@dvec.ru</div>
+        </div>
+    </div>
+
+    <div class="info-block">
+        <div class="icon">🕒</div>
+        <div>
+            <div class="label">Режим работы</div>
+            <div>Пн–Чт: 08:00–17:00<br>Пт: 08:00–16:00</div>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button>📞 Позвонить</button>
+        <button>✉️ Написать</button>
+    </div>
+</div>
+
+</main>
+
+<footer>
+    © ПАО ДЭК — Дальневосточная энергетическая компания
+</footer>
+
+</body>
+</html>

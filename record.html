@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видео. Шнайдер К.Н</title>
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("sideMenu");
+            const overlay = document.getElementById("overlay");
+
+            menu.classList.toggle("open");
+            overlay.classList.toggle("show");
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #0b3d91, #1e90ff);
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: rgba(255, 140, 0, 0.95);
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        header div {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .video-container {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            backdrop-filter: blur(6px);
+            border: 3px solid orange;
+            transition: 0.3s;
+        }
+
+        .video-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(255,140,0,0.5);
+        }
+
+        iframe {
+            border-radius: 15px;
+            max-width: 100%;
+        }
+
+        footer {
+            background: rgba(0, 0, 50, 0.7);
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            color: #dcdcdc;
+        }
+
+
+    .burger {
+        position: fixed;
+        top: 18px;
+        right: 20px;
+        width: 35px;
+        height: 25px;
+        cursor: pointer;
+        z-index: 2000;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .burger span {
+        height: 4px;
+        background: white;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+
+
+    .side-menu {
+        position: fixed;
+        top: 0;
+        right: -260px;
+        width: 240px;
+        height: 100%;
+        background: linear-gradient(180deg, #0d47a1, #1e88e5);
+        color: white;
+        padding: 60px 20px;
+        transition: 0.4s ease;
+        z-index: 1500;
+        box-shadow: -10px 0 25px rgba(0,0,0,0.2);
+    }
+
+    .side-menu h2 {
+        margin-bottom: 20px;
+    }
+
+    .side-menu a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        margin: 12px 0;
+        font-size: 16px;
+        opacity: 0.9;
+    }
+
+    .side-menu a:hover {
+        opacity: 1;
+        transform: translateX(5px);
+        transition: 0.2s;
+    }
+
+
+    .side-menu.open {
+        right: 0;
+    }
+
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        background: rgba(0,0,0,0.4);
+        opacity: 0;
+        visibility: hidden;
+
+        transition: 0.3s;
+        z-index: 1400;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="burger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+
+    <div id="sideMenu" class="side-menu">
+        <h2>Меню</h2>
+        <a href="company.html">О компании</a>
+        <a href="news.html">Новости</a>
+        <a href="rub-uah-calculator.html">Курс валют</a>
+        <a href="map.html">Контакты</a>
+        <a href="record.html">Видео</a>
+    </div>
+
+
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+    <header>
+        <div>
+            ПАО "ДЭК"
+        </div>
+    </header>
+
+    <main>
+        <div class="video-container">
+            <iframe 
+                width="720" 
+                height="405" 
+                src="https://rutube.ru/play/embed/43d94e7e387253578d6ac6cbd18cc131/" 
+                style="border: none;" 
+                allow="clipboard-write; autoplay" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 Видео о компании ПАО "ДЭК"
+    </footer>
+
+</body>
+</html>
